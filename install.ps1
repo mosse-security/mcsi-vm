@@ -1,28 +1,63 @@
 # install chocolatey package manager
-iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+Write-Host "[-] Installing Chocolatey" -ForegroundColor Yellow
+$a = (iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))) | Out-Null
+Write-Host "[+] Chocolatey installed successfully" -ForegroundColor Green
 
-# install chocolatey packets
-$chocolateyPackages = "python", "golang", "tinycc", "wireshark", "nmap", "obs", "sysinternals", "hxd", "vscode", "firefox", "virtualbox"
+function Install-ChocolateyPackages {
+    param([String[]] $PackageList)
 
-$chocolateyPackages | Foreach-Object {
-    choco install $_ -y
+    $PackageList | Foreach-Object {
+        Write-Host "[-] Installing package '$_'" -ForegroundColor Yellow
+        $packageName = $_
+        $i = 0
+
+        while ($true) {
+            $a = (choco install $packageName --yes --limit-output --no-process)
+
+            $results = (choco list --local)
+
+            if ($results -match "$packageName") {
+                Write-Host "[+] Package '$packageName' installed successfully" -ForegroundColor Green
+                break
+            }
+
+            if ($i -eq 3) {
+                Write-Host "[+] Failed to install package '$packageName'" -ForegroundColor Red
+                break
+            }
+
+            $i++
+        }
+    }
 }
+
+# install chocolatey framework packages
+#$chocolateyFrameworkPackages = "dotnet4.6.2", "vcredist"
+#Install-ChocolateyPackages($chocolateyFrameworkPackages)
+
+# install chocolatey language packages
+$chocolateyLanguagePackages = "python", "golang", "tinycc", "ruby"
+Install-ChocolateyPackages($chocolateyLanguagePackages)
+
+# install chocolatey security tools packages
+$chocolateySecurityToolsPackages = "burp-suite-free-edition", "wireshark", "nmap", "sysinternals", "hxd", "windbg", "putty"
+Install-ChocolateyPackages($chocolateySecurityToolsPackages)
+
+# install chocolatey misc packages
+$chocolateyMiscPackages = "vscode", "firefox", "virtualbox", "7zip", "git"
+Install-ChocolateyPackages($chocolateyMiscPackages)
 
 # install C compiler
 
-# install Rust
-
-# install Burp Suite Community
-$burpsuiteDownloadURL = "https://portswigger.net/burp/releases/download?product=community&version=2.1.01&type=jar"
-$burpsuiteOutput = "C:\Program Files\Burp Suite Community\BurpSuiteCommunity.jar"
-Invoke-WebRequest -Uri $burpsuiteDownloadURL -OutFile $burpsuiteOutput
-
-# install Ghidra
-
-# install OBS Studio
+# create download path
+New-Item -Path 'C:\mcsi' -ItemType Directory
 
 # install Wamp Server
+$wampURL = ''
+$wampPath = 'C:\mcsi\wamp_installer.exe'
+Invoke-WebRequest -Uri $wampURL -OutPath $wampPath
 
-# install Visual Studio 2019 Community
-.\MDP46-KB3045557-x86-x64-AllOS-ENU.exe --passive
-.\vs_community__892543757.1563345960.exe --all --passive --norestart
+# install Mingw
+$mingwURL = ''
+$mingwPath = 'C:\mcsi\wamp_installer.exe'
+Invoke-WebRequest -Uri $mingwURL -OutPath $mingwPath
