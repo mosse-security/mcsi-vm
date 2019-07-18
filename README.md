@@ -16,6 +16,7 @@ List of installed tools:
 - Golang Compiler
 - TinyCC
 - Ruby
+- MingW
 - Burp Suite Community
 - Wireshark
 - nmap
@@ -28,3 +29,4 @@ List of installed tools:
 - VirtualBox
 - 7zip
 - Git
+- Wamp Server
