@@ -47,8 +47,6 @@ Install-ChocolateyPackages($chocolateySecurityToolsPackages)
 $chocolateyMiscPackages = "vscode", "firefox", "virtualbox", "7zip", "git"
 Install-ChocolateyPackages($chocolateyMiscPackages)
 
-# install C compiler
-
 # create download path
 New-Item -Path 'C:\mcsi' -ItemType Directory
 
