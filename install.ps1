@@ -32,8 +32,8 @@ function Install-ChocolateyPackages {
 }
 
 # install chocolatey framework packages
-#$chocolateyFrameworkPackages = "dotnet4.6.2", "vcredist"
-#Install-ChocolateyPackages($chocolateyFrameworkPackages)
+$chocolateyFrameworkPackages = "dotnet4.6.2", "vcredist"
+Install-ChocolateyPackages($chocolateyFrameworkPackages)
 
 # install chocolatey language packages
 $chocolateyLanguagePackages = "python", "golang", "tinycc", "ruby"
