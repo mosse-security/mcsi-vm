@@ -51,11 +51,11 @@ Install-ChocolateyPackages($chocolateyMiscPackages)
 New-Item -Path 'C:\mcsi' -ItemType Directory
 
 # install Wamp Server
-$wampURL = ''
+$wampURL = 'https://storage.googleapis.com/cyber-platform-prod.appspot.com/tools/mingw-w64-install.exe'
 $wampPath = 'C:\mcsi\wamp_installer.exe'
 Invoke-WebRequest -Uri $wampURL -OutPath $wampPath
 
 # install Mingw
-$mingwURL = ''
-$mingwPath = 'C:\mcsi\wamp_installer.exe'
+$mingwURL = 'https://storage.googleapis.com/cyber-platform-prod.appspot.com/tools/wamp5_1.6.1.exe'
+$mingwPath = 'C:\mcsi\mingw_installer.exe'
 Invoke-WebRequest -Uri $mingwURL -OutPath $mingwPath
