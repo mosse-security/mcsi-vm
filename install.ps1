@@ -32,7 +32,7 @@ function Install-ChocolateyPackages {
 }
 
 # install chocolatey framework packages
-$chocolateyFrameworkPackages = "dotnet4.6.2", "vcredist"
+$chocolateyFrameworkPackages = "dotnet4.6.2", "vcredist140"
 Install-ChocolateyPackages($chocolateyFrameworkPackages)
 
 # install chocolatey language packages
@@ -53,9 +53,9 @@ New-Item -Path 'C:\mcsi' -ItemType Directory
 # install Wamp Server
 $wampURL = 'https://storage.googleapis.com/cyber-platform-prod.appspot.com/tools/mingw-w64-install.exe'
 $wampPath = 'C:\mcsi\wamp_installer.exe'
-Invoke-WebRequest -Uri $wampURL -OutPath $wampPath
+Invoke-WebRequest -Uri $wampURL -OutFile $wampPath
 
 # install Mingw
 $mingwURL = 'https://storage.googleapis.com/cyber-platform-prod.appspot.com/tools/wamp5_1.6.1.exe'
 $mingwPath = 'C:\mcsi\mingw_installer.exe'
-Invoke-WebRequest -Uri $mingwURL -OutPath $mingwPath
+Invoke-WebRequest -Uri $mingwURL -OutFile $mingwPath
