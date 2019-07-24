@@ -11,7 +11,7 @@ This PowerShell script will automate the setup of a development environment, con
 
 ## List of installed tools:
 
-### Chocolaty
+### Chocolatey
 - *Chocolatey is a package manager for Windows (similar to linux or macOS package managers such as apt-get, homebrew or yum). Its designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure, using PowerShell as its main method for easily installing and updating packages on your system.*
 
 ### Languages/Compilers
