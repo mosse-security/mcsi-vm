@@ -1,5 +1,7 @@
 # MCSI Development Environment Setup
-This PowerShell script will automate the setup of a development environment, consisting of all the necessary tools required to complete the exercises included in the MCSI Online Learning Platform.
+This PowerShell script will automate the setup of a development environment, consisting of all the necessary software tools required to complete the exercises included in the MCSI Online Learning Platform.
+
+For penetration testing tools, please download and use Kali Linux.
 
 ## Installation:
 1. Clone the repo or download `install.ps1` to your system
